@@ -15,6 +15,10 @@ Teach Copilot durable repository context so every prompt does not need to repeat
 
 `bun run validate` checks that the instruction file exists and that exercise steps keep the required structure.
 
+Why this matters in GitHub: repository instructions travel with the code, while issue comments capture task-specific context for the current run.
+
+Stretch: ask Copilot to compare the issue context with `.github/copilot-instructions.md` and identify what should move where.
+
 ## Reflect
 
 Which facts belong in repository instructions, which belong in an issue, and which should stay in your current conversation only?

@@ -19,6 +19,10 @@ Design reusable Copilot workflows for repeated team tasks.
 
 The artifact should be specific enough that another person can run the workflow and know when it is complete.
 
+Why this matters in GitHub: reusable prompts and skills turn one good workflow into a team habit that can be linked from issues and pull requests.
+
+Stretch: add a failure mode to your workflow brief and describe how the agent should stop safely.
+
 ## Reflect
 
 Which repeated workflow would compound the most value if your whole team used it consistently?

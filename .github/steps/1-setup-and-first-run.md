@@ -20,6 +20,10 @@ bash scripts/verify-environment.sh
 
 The verifier should report the available tools and exit successfully. `bun test` should still pass.
 
+Why this matters in GitHub: Codespaces turns setup into shared infrastructure, so every learner and agent starts from the same baseline.
+
+Stretch: capture one setup improvement in the exercise issue that would help a new teammate.
+
 ## Reflect
 
 What setup decision in this repository would make it easier for a future teammate or agent to contribute safely?

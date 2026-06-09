@@ -15,6 +15,8 @@ Consolidate the full GitHub Copilot development workflow and decide what to reus
 
 The repository should be green locally and in GitHub Actions, and your issue should contain a clear next action.
 
+Why this matters in GitHub: the final issue and pull request history become a reusable example for the next learner or team.
+
 ## Reflect
 
 What is the smallest team ritual that would keep this workflow alive after the exercise?

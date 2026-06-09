@@ -27,6 +27,25 @@ This exercise turns a small TypeScript + Bun repository into a guided lab for Gi
 
 The content is readable without Actions, too. Start with [`.github/steps/0-welcome.md`](./.github/steps/0-welcome.md).
 
+## GitHub Skills alignment
+
+This repository follows the same learning shape as GitHub Skills, adapted for GitHub Copilot workflows:
+
+- **Issue-guided learning:** the exercise issue is your mission log, not just a task tracker.
+- **Actions-gated progress:** workflows provide feedback and keep validation visible.
+- **Learner-owned copy:** you work in your own repository copy so the practice uses real GitHub features.
+- **Real workflow surfaces:** Codespaces, Issues, Pull Requests, Actions, and Copilot all stay in the loop.
+
+For the official Skills ecosystem, see the [GitHub Skills catalog](https://learn.github.com/skills), [Exercise Creator](https://github.com/skills/exercise-creator), [Exercise Template](https://github.com/skills/exercise-template), and [Exercise Toolkit](https://github.com/skills/exercise-toolkit).
+
+## Choose your path
+
+| Path | Best for | How to use it |
+|---|---|---|
+| Beginner | You are new to GitHub Skills-style exercises or Copilot CLI | Follow every step exactly and paste key outputs into the issue |
+| Experienced | You already know Issues, PRs, Actions, and Codespaces | Do the core task, then complete the stretch prompt in each step |
+| Facilitated | You are running a group session | Use `docs/facilitator-notes.md` for pacing, hints, and reflection prompts |
+
 ## Requirements
 
 - GitHub account with GitHub Copilot access
@@ -49,6 +68,7 @@ See [`docs/setup/codespaces.md`](./docs/setup/codespaces.md) and [`docs/setup/lo
 | `scripts/` | Environment and content validation helpers |
 | `docs/` | Setup guides and facilitator notes |
 | `appendices/` | Reference material for Copilot surfaces, pricing, and troubleshooting |
+| `docs/skills-alignment.md` | How this repo applies GitHub Skills exercise patterns |
 
 ## Commands
 

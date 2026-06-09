@@ -18,6 +18,10 @@ Learn what work can be split across agents without losing ownership or context.
 
 Your issue should contain a delegation plan that separates independent work from sequencing dependencies.
 
+Why this matters in GitHub: GitHub gives each work stream a visible place to land through issues, branches, pull requests, and checks.
+
+Stretch: mark one task as safe for a cloud agent and one task as human-owned, then explain why.
+
 ## Reflect
 
 Which task was safe to delegate, and which task needed a single accountable owner?

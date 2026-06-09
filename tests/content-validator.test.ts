@@ -8,6 +8,7 @@ async function createMinimalRepo(): Promise<string> {
   const root = await mkdtemp(join(tmpdir(), "copilot-workflows-"));
   await mkdir(join(root, ".github", "steps"), { recursive: true });
   await mkdir(join(root, ".github", "workflows"), { recursive: true });
+  await mkdir(join(root, "docs"), { recursive: true });
 
   for (const step of [
     "0-welcome",
@@ -32,13 +33,18 @@ async function createMinimalRepo(): Promise<string> {
     "package.json",
     "tsconfig.json",
     "biome.json",
+    "docs/skills-alignment.md",
     ".github/copilot-instructions.md",
     ".github/workflows/0-start-exercise.yml",
     ".github/workflows/ci.yml",
   ]) {
     const content = file.endsWith(".yml")
       ? "name: test\npermissions:\n  contents: read\n"
-      : "content\n";
+      : file === "README.md"
+        ? "GitHub Skills alignment\nhttps://learn.github.com/skills\n"
+        : file === "docs/skills-alignment.md"
+          ? "## Design principles\nIssues\nGitHub Actions\nCodespaces\npersonal copy\n\n## Official resources\nhttps://github.com/skills/exercise-creator\nhttps://github.com/skills/exercise-template\nhttps://github.com/skills/exercise-toolkit\n"
+          : "content\n";
     await mkdir(join(root, file, ".."), { recursive: true });
     await writeFile(join(root, file), content);
   }
@@ -83,6 +89,68 @@ describe("content validator", () => {
     expect(result.ok).toBe(false);
     expect(result.errors).toContain(
       ".github/workflows/floating-action.yml uses actions/checkout@v4; pin actions to a full commit SHA",
+    );
+  });
+
+  test("requires GitHub Skills alignment guidance", async () => {
+    const root = await createMinimalRepo();
+    await writeFile(
+      join(root, "docs", "skills-alignment.md"),
+      "## Design principles\n",
+    );
+
+    const result = await validateRepositoryContent(root);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      "docs/skills-alignment.md must describe Issues, GitHub Actions, Codespaces, personal copies, and official Skills resources",
+    );
+  });
+
+  test("rejects workflow run blocks that interpolate GitHub event context", async () => {
+    const root = await createMinimalRepo();
+    const eventContext = "$" + "{{ github.event.issue.title }}";
+    await writeFile(
+      join(root, ".github", "workflows", "event-injection.yml"),
+      `name: event-injection\npermissions:\n  contents: read\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo "${eventContext}"\n`,
+    );
+
+    const result = await validateRepositoryContent(root);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      ".github/workflows/event-injection.yml interpolates github.event context inside a run block; pass event data through env instead",
+    );
+  });
+
+  test("rejects multiline workflow run blocks that interpolate GitHub event context", async () => {
+    const root = await createMinimalRepo();
+    const eventContext = "$" + "{{ github.event.comment.body }}";
+    await writeFile(
+      join(root, ".github", "workflows", "multiline-event-injection.yml"),
+      `name: multiline-event-injection\npermissions:\n  contents: read\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - run: |\n          echo "${eventContext}"\n`,
+    );
+
+    const result = await validateRepositoryContent(root);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      ".github/workflows/multiline-event-injection.yml interpolates github.event context inside a run block; pass event data through env instead",
+    );
+  });
+
+  test("rejects non-HTTPS or untrusted markdown links", async () => {
+    const root = await createMinimalRepo();
+    await writeFile(
+      join(root, "docs", "unsafe-links.md"),
+      "[bad](http://example.com)",
+    );
+
+    const result = await validateRepositoryContent(root);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      "docs/unsafe-links.md links to untrusted or non-HTTPS URL: http://example.com",
     );
   });
 });
