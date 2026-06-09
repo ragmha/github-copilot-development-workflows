@@ -1,0 +1,35 @@
+name: Step 6 - Custom agents skills and commands
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "exercises/prompts/**"
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: step-6-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  post-next-step:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+
+      - name: Post next step
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          NEXT_STEP_FILE: .github/steps/6-custom-agents-skills-and-commands.md
+        run: |
+          set -euo pipefail
+          issue="$(gh issue list --repo "$REPO" --label exercise --state open --json number --jq '.[0].number // empty')"
+          if [ -n "$issue" ]; then
+            gh issue comment "$issue" --repo "$REPO" --body-file "$NEXT_STEP_FILE"
+          fi

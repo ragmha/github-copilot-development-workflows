@@ -1,0 +1,35 @@
+name: Start exercise
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: start-exercise-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  open-issue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+
+      - name: Create or reuse exercise issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          STEP_FILE: .github/steps/0-welcome.md
+        run: |
+          set -euo pipefail
+          existing="$(gh issue list --repo "$REPO" --label exercise --state open --json number --jq '.[0].number // empty')"
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --repo "$REPO" --body-file "$STEP_FILE"
+            echo "Reused issue #$existing"
+          else
+            gh issue create --repo "$REPO" --title "GitHub Copilot development workflows exercise" --label exercise --body-file "$STEP_FILE"
+          fi

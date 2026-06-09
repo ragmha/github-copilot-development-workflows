@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Start the exercise
+    url: https://github.com/ragmha/github-copilot-development-workflows/actions/workflows/0-start-exercise.yml
+    about: Use the Start exercise workflow instead of creating a manual issue.
