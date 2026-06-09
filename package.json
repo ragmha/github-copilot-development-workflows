@@ -5,6 +5,7 @@
   "type": "module",
   "description": "A GitHub Skills-style exercise for learning GitHub Copilot development workflows.",
   "scripts": {
+    "start": "bun src/index.ts",
     "test": "bun test",
     "lint": "biome check .",
     "typecheck": "tsc --noEmit",

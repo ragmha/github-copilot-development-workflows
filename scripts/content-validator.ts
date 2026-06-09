@@ -133,6 +133,18 @@ export async function validateRepositoryContent(
   ) {
     errors.push("README.md must embed docs/diagrams/copilot-workflow.png");
   }
+  if (
+    readme !== undefined &&
+    !(
+      readme.includes("Release Radar") &&
+      readme.includes("risk-section feature") &&
+      readme.includes("release notes from GitHub pull requests")
+    )
+  ) {
+    errors.push(
+      "README.md must explain the concrete Release Radar app and risk-section feature learners build",
+    );
+  }
 
   for (const markdownFile of await listMarkdownFiles(root)) {
     const contents = await readFile(join(root, markdownFile), "utf8");

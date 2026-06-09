@@ -1,27 +1,30 @@
-# Step 4: Parallel agents and delegation
+# Step 4: Implement the risk section
 
 ## Goal
 
-Learn what work can be split across agents without losing ownership or context.
+Use Copilot to make the failing test pass with the smallest useful change to Release Radar.
 
 ## Do this
 
-1. Write a short task split in your exercise issue:
-   - implementation owner,
-   - test/review owner,
-   - documentation owner,
-   - security or risk reviewer.
-2. Identify which tasks can run in parallel and which must wait.
-3. Keep one source of truth: the issue or pull request.
+1. Ask Copilot to implement the risk-section feature in `src/release-radar.ts`.
+2. Keep the public interface small: prefer extending `buildReleaseDraft` behavior over adding a second API.
+3. Run:
+
+```bash
+bun test
+bun run lint
+bun run typecheck
+```
+
+4. Paste the passing test summary into the issue.
+5. Write one sentence explaining why the implementation is minimal.
 
 ## Validation
 
-Your issue should contain a delegation plan that separates independent work from sequencing dependencies.
+The risk-section test should pass, and existing feature/fix/breaking-change tests should still pass. Risky PRs should not disappear from their normal sections if they also carry `feature` or `bug`.
 
-Why this matters in GitHub: GitHub gives each work stream a visible place to land through issues, branches, pull requests, and checks.
-
-Stretch: mark one task as safe for a cloud agent and one task as human-owned, then explain why.
+Why this matters in GitHub: this is the shippable app change. Copilot is useful only if it helps you land a correct, reviewable diff.
 
 ## Reflect
 
-Which task was safe to delegate, and which task needed a single accountable owner?
+What did you ask Copilot to do, and what did you still need to judge yourself?

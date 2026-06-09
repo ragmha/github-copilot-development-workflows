@@ -1,24 +1,26 @@
-# Step 2: Context, memory, and instructions
+# Step 2: Give Copilot the app context
 
 ## Goal
 
-Teach Copilot durable repository context so every prompt does not need to repeat the same rules.
+Make Copilot useful by grounding it in Release Radar's current behavior before asking it to write code.
 
 ## Do this
 
 1. Read `.github/copilot-instructions.md`.
-2. Ask Copilot to summarize the repository's purpose, commands, and safety rules.
-3. Add one small improvement to the instructions if you discover a missing durable rule.
-4. Keep task-specific notes in the issue, not in repository instructions.
+2. Ask Copilot to summarize:
+   - what Release Radar does,
+   - how `buildReleaseDraft` groups PRs,
+   - which behavior is missing for the risk-section feature,
+   - which commands prove the change works.
+3. Paste the useful summary into the issue under `## Copilot context`.
+4. If repository instructions are missing durable guidance, make a small update. Do not put one-off task notes there.
 
 ## Validation
 
-`bun run validate` checks that the instruction file exists and that exercise steps keep the required structure.
+`bun run validate` checks the repository structure. The issue should now contain enough app context that a different agent could continue the feature without reading your private chat.
 
-Why this matters in GitHub: repository instructions travel with the code, while issue comments capture task-specific context for the current run.
-
-Stretch: ask Copilot to compare the issue context with `.github/copilot-instructions.md` and identify what should move where.
+Why this matters in GitHub: repository instructions hold durable rules, while the issue holds the concrete feature context.
 
 ## Reflect
 
-Which facts belong in repository instructions, which belong in an issue, and which should stay in your current conversation only?
+Which facts belong in repository instructions, and which belong only in this feature issue?

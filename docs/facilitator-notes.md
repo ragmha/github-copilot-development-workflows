@@ -1,13 +1,13 @@
 # Facilitator notes
 
-This repository can run as a self-paced GitHub Skills-style exercise or as a guided session.
+This repository can run as a self-paced GitHub Skills-style exercise or as a guided session. The concrete learner outcome is a PR-ready Release Radar feature: a `## Risks to review` release-note section for risky merged pull requests.
 
 ## Recommended facilitation rhythm
 
-1. Frame each step as a workflow shift, not a feature tour.
-2. Ask learners to keep the issue as the shared source of truth.
-3. Encourage TDD: one failing behavior test, one minimal implementation, one review.
-4. Pause after delegation and guardrails steps for group discussion.
+1. Start with the app behavior, not the Copilot tooling.
+2. Ask learners to keep the feature issue as the shared source of truth.
+3. Encourage TDD: one failing risk-section behavior test, one minimal implementation, one review.
+4. Pause after PR review and guardrails steps for group discussion.
 5. End with one concrete workflow habit learners will try in a real repository.
 
 ## Common coaching prompts
@@ -16,6 +16,7 @@ This repository can run as a self-paced GitHub Skills-style exercise or as a gui
 - Which task can safely run in parallel?
 - What validation would let you trust an agent-produced pull request?
 - What metric would prove this workflow improves delivery quality?
+- What made the Release Radar PR easier or harder to review?
 
 ## Skills-style coaching rubric
 

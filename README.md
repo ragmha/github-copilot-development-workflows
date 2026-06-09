@@ -1,31 +1,62 @@
-# GitHub Copilot Development Workflows
+# Release Radar: GitHub Copilot Development Workflows
 
-> A GitHub Skills-style exercise for learning how to use GitHub Copilot as a development workflow platform: from setup and context to delegation, guardrails, and sustainable adoption.
+> A GitHub Skills-style exercise where you use GitHub Copilot to ship a real TypeScript feature: better release notes from GitHub pull requests.
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/ragmha/github-copilot-development-workflows?quickstart=1)
 
-## What you will learn
+## The point of the exercise
 
-This exercise turns a small TypeScript + Bun repository into a guided lab for GitHub-native agentic development. You will practice:
+You are maintaining **Release Radar**, a tiny TypeScript + Bun app that builds release notes from GitHub pull requests. The app already groups merged PRs into **Breaking changes**, **Features**, and **Fixes**.
 
-- setting up a reproducible Copilot workspace,
-- giving Copilot durable repository context,
-- using an issue-driven test-first development loop,
-- splitting work across local and cloud agents,
-- connecting work to GitHub Issues, Projects, and MCP context,
-- designing reusable Copilot workflows,
-- adding guardrails with tests, linting, Actions, and review,
-- reasoning about Copilot usage, cost, and team adoption.
+Your job is to ship one concrete product improvement:
 
-## How the exercise works
+> Add a **risk-section feature** so Release Radar creates a **Risks to review** section for merged PRs labeled `security`, `dependency`, or `migration`.
 
-1. Open this repository in Codespaces or clone it locally.
-2. Run `bun install`.
-3. Start the exercise from the **Actions** tab by running **Start exercise**.
-4. Follow the issue comments posted from `.github/steps/`.
-5. Complete each step by making the requested repository change and opening or updating a pull request.
+By the end, you should have a PR-ready change with:
 
-The content is readable without Actions, too. Start with [`.github/steps/0-welcome.md`](./.github/steps/0-welcome.md).
+- a GitHub Issue containing the problem and acceptance criteria,
+- a failing behavior test you wrote first,
+- a Copilot-assisted implementation in `src/release-radar.ts`,
+- passing tests, lint, typecheck, and content validation,
+- a pull request description that explains the change and evidence.
+
+That is the workflow this repo teaches: not “use AI in general,” but **turn a GitHub issue into a tested, reviewed, merge-ready app feature**.
+
+## What you will build
+
+Release Radar turns release notes from GitHub pull requests into Markdown:
+
+```ts
+buildReleaseDraft({
+  version: "1.4.0",
+  pullRequests: [
+    { number: 42, title: "Add saved searches", author: "mona", labels: ["feature"], merged: true },
+    { number: 43, title: "Fix empty dashboard crash", author: "hubot", labels: ["bug"], merged: true },
+  ],
+});
+```
+
+The starter app produces:
+
+```md
+# Release 1.4.0
+
+## Features
+
+- Add saved searches (#42) by @mona
+
+## Fixes
+
+- Fix empty dashboard crash (#43) by @hubot
+```
+
+The feature you build adds a risk section when the release includes risky work:
+
+```md
+## Risks to review
+
+- Rotate dependency signing key (#45) by @octocat
+```
 
 ## Visual workflow map
 
@@ -33,13 +64,24 @@ The content is readable without Actions, too. Start with [`.github/steps/0-welco
 
 See [`docs/visual-overview.md`](./docs/visual-overview.md) for a guided explanation and the editable draw.io source.
 
+## How the exercise works
+
+1. Open this repository in Codespaces or clone it locally.
+2. Run `bun install`.
+3. Run the app with `bun start` and inspect `src/release-radar.ts`.
+4. Start the exercise from the **Actions** tab by running **Start exercise**.
+5. Follow the issue comments posted from `.github/steps/`.
+6. Ship the risk-section feature through a branch and pull request.
+
+The content is readable without Actions, too. Start with [`.github/steps/0-welcome.md`](./.github/steps/0-welcome.md).
+
 ## GitHub Skills alignment
 
-This repository follows the same learning shape as GitHub Skills, adapted for GitHub Copilot workflows:
+This repository follows the same learning shape as GitHub Skills, adapted for a concrete Copilot coding task:
 
-- **Issue-guided learning:** the exercise issue is your mission log, not just a task tracker.
+- **Issue-guided learning:** the feature issue is your mission log.
 - **Actions-gated progress:** workflows provide feedback and keep validation visible.
-- **Learner-owned copy:** you work in your own repository copy so the practice uses real GitHub features.
+- **Learner-owned copy:** you work in your own repository copy so branches, issues, PRs, and Actions are real.
 - **Real workflow surfaces:** Codespaces, Issues, Pull Requests, Actions, and Copilot all stay in the loop.
 
 For the official Skills ecosystem, see the [GitHub Skills catalog](https://learn.github.com/skills), [Exercise Creator](https://github.com/skills/exercise-creator), [Exercise Template](https://github.com/skills/exercise-template), and [Exercise Toolkit](https://github.com/skills/exercise-toolkit).
@@ -48,8 +90,8 @@ For the official Skills ecosystem, see the [GitHub Skills catalog](https://learn
 
 | Path | Best for | How to use it |
 |---|---|---|
-| Beginner | You are new to GitHub Skills-style exercises or Copilot CLI | Follow every step exactly and paste key outputs into the issue |
-| Experienced | You already know Issues, PRs, Actions, and Codespaces | Do the core task, then complete the stretch prompt in each step |
+| Beginner | You want a guided first Copilot CLI workflow | Follow every step and paste key outputs into the issue |
+| Experienced | You already know Issues, PRs, Actions, and Codespaces | Implement the feature, then use the stretch prompts for review depth |
 | Facilitated | You are running a group session | Use `docs/facilitator-notes.md` for pacing, hints, and reflection prompts |
 
 ## Requirements
@@ -66,39 +108,40 @@ See [`docs/setup/codespaces.md`](./docs/setup/codespaces.md) and [`docs/setup/lo
 
 | Path | Purpose |
 |---|---|
+| `src/release-radar.ts` | Release Radar app logic |
+| `tests/release-radar.test.ts` | Behavior tests for release-note generation |
 | `.github/steps/` | Learner-facing issue comments for each exercise step |
 | `.github/workflows/` | GitHub Actions that start the exercise, advance steps, and run CI |
 | `.github/copilot-instructions.md` | Durable instructions for Copilot agents working in this repo |
-| `src/` | Small TypeScript lab code used by the exercise |
-| `tests/` | Behavior tests for the lab and repository validation |
 | `scripts/` | Environment and content validation helpers |
-| `docs/` | Setup guides and facilitator notes |
+| `docs/` | Setup guides, facilitator notes, and visual overview |
 | `appendices/` | Reference material for Copilot surfaces, pricing, and troubleshooting |
-| `docs/skills-alignment.md` | How this repo applies GitHub Skills exercise patterns |
-| `docs/visual-overview.md` | Visual explanation of the issue-guided Copilot workflow |
+| `exercises/expected-outcomes/` | Acceptance criteria and examples for the target feature |
 
 ## Commands
 
 ```bash
 bun install
+bun start
 bun test
 bun run lint
+bun run typecheck
 bun run validate
 ```
 
 ## Exercise steps
 
-| Step | Topic | Main GitHub surface |
+| Step | Concrete outcome | Main GitHub surface |
 |---|---|---|
-| 0 | Welcome and mission | Issues, Codespaces |
-| 1 | Setup and first run | Codespaces, Bun, GitHub CLI, Copilot CLI |
-| 2 | Context, memory, and instructions | Repository instructions, Issues, PRs |
-| 3 | Agentic development loop | Tests, Copilot CLI, Pull Requests |
-| 4 | Parallel agents and delegation | Copilot CLI, cloud agent, review agents |
-| 5 | Issues, Projects, and MCP | GitHub planning context |
-| 6 | Custom agents, skills, and commands | Reusable Copilot workflows |
-| 7 | Guardrails, Actions, and review | GitHub Actions, branch protection |
-| 8 | Economics and adoption | Copilot usage and rollout rituals |
+| 0 | Understand Release Radar and the target risk-section feature | Codespaces, source files |
+| 1 | Create a feature issue with acceptance criteria | Issues |
+| 2 | Give Copilot durable app context | Repository instructions, issue context |
+| 3 | Write the failing test for `Risks to review` | Tests, Copilot CLI |
+| 4 | Implement the feature in `src/release-radar.ts` | Copilot CLI, source code |
+| 5 | Open a PR linked to the issue | Pull Requests |
+| 6 | Use review to harden edge cases | Copilot review, PR discussion |
+| 7 | Make CI and guardrails green | GitHub Actions |
+| 8 | Capture what this workflow changes for a real team | Issue reflection |
 
 ## License
 

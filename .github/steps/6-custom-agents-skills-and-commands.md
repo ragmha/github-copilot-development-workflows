@@ -1,28 +1,26 @@
-# Step 6: Custom agents, skills, and commands
+# Step 6: Review and harden the feature
 
 ## Goal
 
-Design reusable Copilot workflows for repeated team tasks.
+Use Copilot as a reviewer, not just an implementer, so the feature handles edge cases and remains maintainable.
 
 ## Do this
 
-1. Choose one repeated workflow, such as test-first issue implementation, pre-push review, or release note drafting.
-2. Draft a reusable command, skill, or custom-agent brief in `exercises/prompts/`.
-3. Include:
-   - trigger,
-   - inputs,
-   - expected output,
-   - safety guardrails,
-   - validation command.
+1. Ask Copilot to review the PR against the acceptance criteria.
+2. Ask specifically about edge cases:
+   - a PR has both `security` and `feature`,
+   - a PR is unmerged,
+   - labels use uppercase or mixed case,
+   - no risky PRs exist.
+3. Add any missing test that catches a real behavior gap.
+4. Adapt the starter prompt in `exercises/prompts/release-radar-review.md` so it reflects what you learned from this feature.
 
 ## Validation
 
-The artifact should be specific enough that another person can run the workflow and know when it is complete.
+The PR should include either a clear "no change needed" review note or an additional test/fix based on the review. The reusable prompt should still name inputs, outputs, guardrails, and validation commands.
 
-Why this matters in GitHub: reusable prompts and skills turn one good workflow into a team habit that can be linked from issues and pull requests.
-
-Stretch: add a failure mode to your workflow brief and describe how the agent should stop safely.
+Why this matters in GitHub: review is where agentic workflows become trustworthy instead of just faster.
 
 ## Reflect
 
-Which repeated workflow would compound the most value if your whole team used it consistently?
+Which edge case was easiest for Copilot to miss?

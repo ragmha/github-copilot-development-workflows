@@ -1,29 +1,41 @@
-# Step 1: Setup and first run
+# Step 1: Create the feature issue
 
 ## Goal
 
-Create a reproducible GitHub Copilot workspace that works for humans and agents.
+Turn the product request into a GitHub Issue that Copilot, a teammate, or a future you can use as the source of truth.
 
 ## Do this
 
-1. Confirm `gh`, Copilot CLI, Bun, and Git are available.
-2. Run the environment verifier:
+1. Confirm `gh`, Copilot CLI, Bun, and Git are available:
 
 ```bash
 bash scripts/verify-environment.sh
 ```
 
-3. Read `docs/setup/codespaces.md` or `docs/setup/local-bun.md`.
-4. Commit any setup note requested by your facilitator or issue.
+2. Create or update the exercise issue with this feature request:
+
+```md
+## Problem
+
+Release Radar hides risky changes inside regular release-note sections. Maintainers need risky PRs to stand out before publishing a release.
+
+## Acceptance criteria
+
+- Merged PRs labeled `security`, `dependency`, or `migration` appear under `## Risks to review`.
+- Unmerged PRs are ignored.
+- Risky PRs still keep their existing release-note section if they also have labels like `feature` or `bug`.
+- The risk section appears after `## Breaking changes` and before `## Features`.
+- The behavior is covered by a failing test before implementation.
+```
+
+3. Add links to `src/release-radar.ts` and `tests/release-radar.test.ts` in the issue.
 
 ## Validation
 
-The verifier should report the available tools and exit successfully. `bun test` should still pass.
+The issue should contain the problem, acceptance criteria, test expectation, and file links. `bun test` should still pass before you start changing behavior.
 
-Why this matters in GitHub: Codespaces turns setup into shared infrastructure, so every learner and agent starts from the same baseline.
-
-Stretch: capture one setup improvement in the exercise issue that would help a new teammate.
+Why this matters in GitHub: a good issue gives Copilot and reviewers the same target, so the PR is judged against shared acceptance criteria.
 
 ## Reflect
 
-What setup decision in this repository would make it easier for a future teammate or agent to contribute safely?
+What information in the issue would prevent an agent from overbuilding this feature?

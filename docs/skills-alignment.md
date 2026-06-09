@@ -1,6 +1,6 @@
 # GitHub Skills alignment
 
-This repository is not an official GitHub Skills exercise. It is an original Copilot workflow exercise that follows the same learning shape: hands-on work in a real repository, guided by Issues, GitHub Actions, and Codespaces.
+This repository is not an official GitHub Skills exercise. It is an original Copilot workflow exercise that follows the same learning shape: hands-on work in a real repository, guided by Issues, GitHub Actions, and Codespaces. The hands-on work is a concrete Release Radar app feature, not a simulated workflow.
 
 ## Design principles
 

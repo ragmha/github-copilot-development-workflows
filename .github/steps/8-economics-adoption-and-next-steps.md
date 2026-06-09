@@ -1,27 +1,25 @@
-# Step 8: Economics and adoption
+# Step 8: Decide what workflow habit to keep
 
 ## Goal
 
-Make agentic development sustainable by looking at cost, quality, and team behavior.
+Separate the reusable workflow from the one-off Release Radar feature.
 
 ## Do this
 
 1. Read `appendices/pricing-and-usage.md`.
-2. Write a short adoption note in your issue:
-   - where Copilot saves time,
-   - where review effort increases,
-   - what metric would prove the workflow is helping,
-   - what guardrail prevents misuse.
-3. Choose one workflow improvement to try in a real repository.
+2. In the issue, write a short adoption note:
+   - where Copilot helped on this feature,
+   - where review effort increased,
+   - which GitHub artifact made the work easier to resume,
+   - what metric would prove this workflow helps a real team.
+3. Choose one habit to keep for your next real repository.
 
 ## Validation
 
-Your adoption note should describe both upside and risk. It should include at least one measurable signal.
+Your note should name a concrete habit, such as "start feature work by writing the issue acceptance criteria and failing test before asking Copilot to implement."
 
-Why this matters in GitHub: adoption is easier to measure when the workflow leaves traces in issues, pull requests, review time, and check results.
-
-Stretch: choose one GitHub signal you could measure for a month without adding new tooling.
+Why this matters in GitHub: the goal is not the demo app; the goal is a repeatable way to ship safer app changes.
 
 ## Reflect
 
-What would prove that Copilot is improving outcomes rather than only increasing activity?
+What would you change in your team's next PR after doing this exercise?

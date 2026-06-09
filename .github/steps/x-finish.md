@@ -1,22 +1,28 @@
-# Finish: Apply the workflow
+# Finish: PR-ready Release Radar feature
 
 ## Goal
 
-Consolidate the full GitHub Copilot development workflow and decide what to reuse in a real repository.
+Confirm that you shipped a real feature through a GitHub-native Copilot workflow.
 
 ## Do this
 
-1. Confirm tests, lint, and content validation pass.
-2. Review the issue thread and pull request.
-3. Write the one workflow habit you will take back to your team.
-4. Close the exercise issue when finished.
+1. Confirm the risk-section feature works.
+2. Confirm tests, lint, typecheck, and content validation pass.
+3. Review the issue thread and pull request.
+4. Make sure the PR explains:
+   - problem,
+   - acceptance criteria,
+   - test evidence,
+   - implementation summary,
+   - risks or edge cases.
+5. Close the exercise issue when finished.
 
 ## Validation
 
-The repository should be green locally and in GitHub Actions, and your issue should contain a clear next action.
+The repository should be green locally and in GitHub Actions, and the PR should be understandable without your private Copilot chat.
 
-Why this matters in GitHub: the final issue and pull request history become a reusable example for the next learner or team.
+Why this matters in GitHub: the final artifact is a reviewed, tested feature change a maintainer could actually merge.
 
 ## Reflect
 
-What is the smallest team ritual that would keep this workflow alive after the exercise?
+What is the smallest part of this workflow you would bring into a real feature tomorrow?

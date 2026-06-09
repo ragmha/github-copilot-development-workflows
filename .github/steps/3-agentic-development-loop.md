@@ -1,34 +1,61 @@
-# Step 3: Agentic development loop
+# Step 3: Write the failing test
 
 ## Goal
 
-Practice a test-first loop: understand the issue, write one failing behavior test, implement the smallest useful change, then review.
+Create the red part of the red-green loop for the risk-section feature.
 
 ## Do this
 
-1. Pick one behavior in `src/github-workflow-lab.ts`.
-2. Add one behavior-focused test in `tests/github-workflow-lab.test.ts`.
-3. Run the test and confirm it fails for the expected reason.
-4. Implement the minimal change.
-5. Paste the red/green evidence into the exercise issue:
-   - the failing test summary,
-   - the change you made,
-   - the passing test summary.
-6. Run:
+1. Open `tests/release-radar.test.ts`.
+2. Add one behavior test for this scenario:
+
+```ts
+buildReleaseDraft({
+  version: "1.5.0",
+  pullRequests: [
+    {
+      number: 41,
+      title: "Remove legacy webhook payload",
+      author: "mona",
+      labels: ["breaking"],
+      merged: true,
+    },
+    {
+      number: 45,
+      title: "Rotate dependency signing key",
+      author: "octocat",
+      labels: ["dependency", "security"],
+      merged: true,
+    },
+  ],
+});
+```
+
+3. Assert that the output contains:
+
+```md
+## Risks to review
+
+- Rotate dependency signing key (#45) by @octocat
+```
+
+4. Add a feature PR to the test input, then assert section order:
+   - `## Breaking changes` appears before `## Risks to review`.
+   - `## Risks to review` appears before `## Features`.
+5. Run:
 
 ```bash
 bun test
-bun run lint
 ```
+
+6. Paste the failing test summary into the issue.
 
 ## Validation
 
-The test should fail before the implementation and pass after it. Avoid tests that assert internal helper behavior.
+The new test should fail because `src/release-radar.ts` does not yet create a risk section. If the test passes before implementation, the test is not proving the missing behavior.
 
-Why this matters in GitHub: the issue records intent, the test records expected behavior, and the pull request records the reviewed change.
-
-Stretch: ask Copilot to review whether your test describes behavior or implementation details.
+Why this matters in GitHub: the issue records intent, the test records expected behavior, and the future PR can show exactly what changed.
 
 ## Reflect
 
-How did starting with a behavior test change the instructions you gave Copilot?
+How did the acceptance criteria shape the test you wrote?

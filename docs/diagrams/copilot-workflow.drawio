@@ -4,25 +4,25 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="title" value="GitHub Copilot Skills-style workflow" style="text;html=1;strokeColor=none;fillColor=none;fontSize=24;fontStyle=1;fontColor=#24292f;align=center;" vertex="1" parent="1">
+        <mxCell id="title" value="Release Radar feature journey" style="text;html=1;strokeColor=none;fillColor=none;fontSize=24;fontStyle=1;fontColor=#24292f;align=center;" vertex="1" parent="1">
           <mxGeometry x="360" y="20" width="680" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="subtitle" value="Learner-owned repository + issue-guided steps + Copilot-assisted TDD + Actions guardrails" style="text;html=1;strokeColor=none;fillColor=none;fontSize=14;fontColor=#57606a;align=center;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="Build one real feature: issue → failing test → Copilot implementation → PR → green CI" style="text;html=1;strokeColor=none;fillColor=none;fontSize=14;fontColor=#57606a;align=center;" vertex="1" parent="1">
           <mxGeometry x="305" y="58" width="790" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="copy" value="Learner-owned copy&#xa;Codespaces&#xa;or local Bun" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;arcSize=12;shadow=1;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="copy" value="Release Radar app&#xa;release notes from PRs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;arcSize=12;shadow=1;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="132" width="220" height="96" as="geometry" />
         </mxCell>
-        <mxCell id="start" value="Start exercise&#xa;workflow_dispatch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;arcSize=12;shadow=1;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="start" value="Feature issue&#xa;Risks to review" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;arcSize=12;shadow=1;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="300" y="140" width="170" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="issue" value="Exercise issue&#xa;mission log" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="issue" value="Acceptance criteria&#xa;+ file links" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="530" y="132" width="170" height="96" as="geometry" />
         </mxCell>
-        <mxCell id="steps" value=".github/steps&#xa;guided comments" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;arcSize=12;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="steps" value="Failing test&#xa;risk PR example" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;arcSize=12;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="760" y="140" width="170" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="copilot" value="Copilot workspace&#xa;VS Code + CLI + GitHub.com" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;arcSize=12;shadow=1;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="copilot" value="Copilot implementation&#xa;src/release-radar.ts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;arcSize=12;shadow=1;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="990" y="140" width="220" height="80" as="geometry" />
         </mxCell>
         <mxCell id="instructions" value="Durable context&#xa;.github/copilot-instructions.md" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;arcSize=12;" vertex="1" parent="1">
@@ -31,22 +31,22 @@
         <mxCell id="github-context" value="GitHub context&#xa;Issues + PRs + Projects + MCP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;arcSize=12;" vertex="1" parent="1">
           <mxGeometry x="990" y="370" width="220" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="loop-group" value="TDD implementation loop" style="swimlane;html=1;rounded=1;startSize=32;fillColor=#ffffff;strokeColor=#6c8ebf;strokeWidth=2;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="loop-group" value="Concrete red-green loop" style="swimlane;html=1;rounded=1;startSize=32;fillColor=#ffffff;strokeColor=#6c8ebf;strokeWidth=2;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="100" y="300" width="780" height="230" as="geometry" />
         </mxCell>
-        <mxCell id="plan" value="1. Plan from issue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;arcSize=12;" vertex="1" parent="loop-group">
+        <mxCell id="plan" value="1. Read issue&#xa;and app code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;arcSize=12;" vertex="1" parent="loop-group">
           <mxGeometry x="35" y="78" width="130" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="red" value="2. Red&#xa;write one failing behavior test" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;arcSize=12;" vertex="1" parent="loop-group">
+        <mxCell id="red" value="2. Red&#xa;test Risks to review" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;arcSize=12;" vertex="1" parent="loop-group">
           <mxGeometry x="195" y="78" width="150" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="implement" value="3. Implement&#xa;minimal useful change" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;arcSize=12;" vertex="1" parent="loop-group">
+        <mxCell id="implement" value="3. Implement&#xa;risk section logic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;arcSize=12;" vertex="1" parent="loop-group">
           <mxGeometry x="375" y="78" width="150" height="70" as="geometry" />
         </mxCell>
         <mxCell id="green" value="4. Green&#xa;tests + lint + typecheck" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;arcSize=12;" vertex="1" parent="loop-group">
           <mxGeometry x="555" y="78" width="150" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="evidence" value="Paste red/green evidence back into the issue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;arcSize=12;" vertex="1" parent="loop-group">
+        <mxCell id="evidence" value="Paste red/green evidence into the issue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;arcSize=12;" vertex="1" parent="loop-group">
           <mxGeometry x="250" y="168" width="280" height="42" as="geometry" />
         </mxCell>
         <mxCell id="pr" value="Pull request&#xa;review + discussion" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;arcSize=12;shadow=1;fontStyle=1;" vertex="1" parent="1">
@@ -61,7 +61,7 @@
         <mxCell id="adoption" value="Adoption note&#xa;cost, quality, next ritual" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;arcSize=12;shadow=1;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="510" y="760" width="260" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="team-workflow" value="Apply in a real repo&#xa;one reusable team habit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;arcSize=12;shadow=1;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="team-workflow" value="PR-ready feature&#xa;reviewable and mergeable" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;arcSize=12;shadow=1;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="860" y="760" width="260" height="80" as="geometry" />
         </mxCell>
         <mxCell id="legend" value="Blue = learner/action · Yellow = quality gate/evidence · Green = progress/adoption · Gray = context/source" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f6f8fa;strokeColor=#d0d7de;fontSize=12;fontColor=#57606a;" vertex="1" parent="1">

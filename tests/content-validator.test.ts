@@ -45,7 +45,7 @@ async function createMinimalRepo(): Promise<string> {
     const content = file.endsWith(".yml")
       ? "name: test\npermissions:\n  contents: read\n"
       : file === "README.md"
-        ? "GitHub Skills alignment\n![Workflow map](docs/diagrams/copilot-workflow.png)\nhttps://learn.github.com/skills\n"
+        ? "GitHub Skills alignment\nRelease Radar\nrisk-section feature\nrelease notes from GitHub pull requests\n![Workflow map](docs/diagrams/copilot-workflow.png)\nhttps://learn.github.com/skills\n"
         : file === "docs/skills-alignment.md"
           ? "## Design principles\nIssues\nGitHub Actions\nCodespaces\npersonal copy\n\n## Official resources\nhttps://github.com/skills/exercise-creator\nhttps://github.com/skills/exercise-template\nhttps://github.com/skills/exercise-toolkit\n"
           : file === "docs/visual-overview.md"
@@ -172,6 +172,21 @@ describe("content validator", () => {
     expect(result.ok).toBe(false);
     expect(result.errors).toContain(
       "README.md must embed docs/diagrams/copilot-workflow.png",
+    );
+  });
+
+  test("requires a concrete Release Radar app spine", async () => {
+    const root = await createMinimalRepo();
+    await writeFile(
+      join(root, "README.md"),
+      "GitHub Skills alignment\n![Workflow map](docs/diagrams/copilot-workflow.png)\nhttps://learn.github.com/skills\n",
+    );
+
+    const result = await validateRepositoryContent(root);
+
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain(
+      "README.md must explain the concrete Release Radar app and risk-section feature learners build",
     );
   });
 });
