@@ -8,7 +8,6 @@ async function createMinimalRepo(): Promise<string> {
   const root = await mkdtemp(join(tmpdir(), "copilot-workflows-"));
   await mkdir(join(root, ".github", "steps"), { recursive: true });
   await mkdir(join(root, ".github", "workflows"), { recursive: true });
-  await mkdir(join(root, "docs", "diagrams"), { recursive: true });
   await mkdir(join(root, "docs"), { recursive: true });
 
   for (const step of [
@@ -34,8 +33,6 @@ async function createMinimalRepo(): Promise<string> {
     "package.json",
     "tsconfig.json",
     "biome.json",
-    "docs/diagrams/copilot-workflow.drawio",
-    "docs/diagrams/copilot-workflow.png",
     "docs/visual-overview.md",
     "docs/skills-alignment.md",
     ".github/copilot-instructions.md",
@@ -45,11 +42,11 @@ async function createMinimalRepo(): Promise<string> {
     const content = file.endsWith(".yml")
       ? "name: test\npermissions:\n  contents: read\n"
       : file === "README.md"
-        ? "GitHub Skills alignment\nRelease Radar\nrisk-section feature\nrelease notes from GitHub pull requests\n![Workflow map](docs/diagrams/copilot-workflow.png)\nhttps://learn.github.com/skills\n"
+        ? "GitHub Skills alignment\nRelease Radar\nrisk-section feature\nrelease notes from GitHub pull requests\n```text\nRelease Radar app -> Feature issue -> Failing test -> Copilot implementation -> Pull request -> GitHub Actions -> PR-ready feature\n```\nhttps://learn.github.com/skills\n"
         : file === "docs/skills-alignment.md"
           ? "## Design principles\nIssues\nGitHub Actions\nCodespaces\npersonal copy\n\n## Official resources\nhttps://github.com/skills/exercise-creator\nhttps://github.com/skills/exercise-template\nhttps://github.com/skills/exercise-toolkit\n"
           : file === "docs/visual-overview.md"
-            ? "GitHub Copilot workflow map\n\n[Source diagram](diagrams/copilot-workflow.drawio)\n\n![Workflow map](diagrams/copilot-workflow.png)\n"
+            ? "GitHub Copilot workflow map\n\n```text\nRelease Radar app -> Feature issue -> Failing test -> Copilot implementation -> Pull request -> GitHub Actions -> PR-ready feature\n```\n"
             : "content\n";
     await mkdir(join(root, file, ".."), { recursive: true });
     await writeFile(join(root, file), content);
@@ -160,7 +157,7 @@ describe("content validator", () => {
     );
   });
 
-  test("requires the README to embed the workflow visualization", async () => {
+  test("requires the README to include the ASCII workflow visualization", async () => {
     const root = await createMinimalRepo();
     await writeFile(
       join(root, "README.md"),
@@ -171,7 +168,7 @@ describe("content validator", () => {
 
     expect(result.ok).toBe(false);
     expect(result.errors).toContain(
-      "README.md must embed docs/diagrams/copilot-workflow.png",
+      "README.md must include the ASCII Release Radar workflow diagram",
     );
   });
 
@@ -179,7 +176,7 @@ describe("content validator", () => {
     const root = await createMinimalRepo();
     await writeFile(
       join(root, "README.md"),
-      "GitHub Skills alignment\n![Workflow map](docs/diagrams/copilot-workflow.png)\nhttps://learn.github.com/skills\n",
+      "GitHub Skills alignment\n```text\nRelease Radar app -> Feature issue -> Failing test -> Copilot implementation -> Pull request -> GitHub Actions -> PR-ready feature\n```\nhttps://learn.github.com/skills\n",
     );
 
     const result = await validateRepositoryContent(root);

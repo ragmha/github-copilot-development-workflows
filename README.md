@@ -58,11 +58,41 @@ The feature you build adds a risk section when the release includes risky work:
 - Rotate dependency signing key (#45) by @octocat
 ```
 
-## Visual workflow map
+## ASCII workflow map
 
-![GitHub Copilot workflow map](docs/diagrams/copilot-workflow.png)
+```text
+Release Radar app
+  release notes from PRs
+        |
+        v
+Feature issue
+  "Add Risks to review"
+        |
+        v
+Acceptance criteria + file links
+        |
+        v
+Failing test
+  risky PR example is red
+        |
+        v
+Copilot implementation
+  src/release-radar.ts
+        |
+        v
+Pull request
+  issue link + red/green evidence
+        |
+        v
+GitHub Actions
+  bun test + lint + typecheck + validate
+        |
+        v
+PR-ready feature
+  reviewable and mergeable
+```
 
-See [`docs/visual-overview.md`](./docs/visual-overview.md) for a guided explanation and the editable draw.io source.
+See [`docs/visual-overview.md`](./docs/visual-overview.md) for a guided explanation of this flow.
 
 ## How the exercise works
 

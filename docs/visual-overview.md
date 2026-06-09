@@ -1,8 +1,38 @@
-# Visual overview
+# ASCII visual overview
 
 The workflow map shows the actual point of the exercise: ship a concrete Release Radar feature, not a workflow diagram about workflows.
 
-![Release Radar workflow map](diagrams/copilot-workflow.png)
+```text
+Release Radar app
+  release notes from PRs
+        |
+        v
+Feature issue
+  "Add Risks to review"
+        |
+        v
+Acceptance criteria + file links
+        |
+        v
+Failing test
+  risky PR example is red
+        |
+        v
+Copilot implementation
+  src/release-radar.ts
+        |
+        v
+Pull request
+  issue link + red/green evidence
+        |
+        v
+GitHub Actions
+  bun test + lint + typecheck + validate
+        |
+        v
+PR-ready feature
+  reviewable and mergeable
+```
 
 ## How to read the diagram
 
@@ -12,5 +42,3 @@ The workflow map shows the actual point of the exercise: ship a concrete Release
 4. **Use Copilot to implement.** Copilot helps change `src/release-radar.ts`, but the test and issue define done.
 5. **Open a PR.** The pull request links the issue, implementation, and red/green evidence.
 6. **Trust the guardrails.** Tests, lint, typecheck, validation, and security review make the feature reviewable.
-
-The editable source is [`diagrams/copilot-workflow.drawio`](diagrams/copilot-workflow.drawio).

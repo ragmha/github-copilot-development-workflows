@@ -6,8 +6,6 @@ const requiredFiles = [
   "package.json",
   "tsconfig.json",
   "biome.json",
-  "docs/diagrams/copilot-workflow.drawio",
-  "docs/diagrams/copilot-workflow.png",
   "docs/skills-alignment.md",
   "docs/visual-overview.md",
   ".github/copilot-instructions.md",
@@ -51,6 +49,17 @@ const trustedLinkHosts = new Set([
   "github.com",
   "learn.github.com",
 ]);
+
+const asciiDiagramRequirements = [
+  "```text",
+  "Release Radar app",
+  "Feature issue",
+  "Failing test",
+  "Copilot implementation",
+  "Pull request",
+  "GitHub Actions",
+  "PR-ready feature",
+];
 
 export type ValidationResult = {
   ok: boolean;
@@ -129,9 +138,13 @@ export async function validateRepositoryContent(
   const readme = await readTextIfExists(join(root, "README.md"));
   if (
     readme !== undefined &&
-    !readme.includes("docs/diagrams/copilot-workflow.png")
+    !asciiDiagramRequirements.every((requirement) =>
+      readme.includes(requirement),
+    )
   ) {
-    errors.push("README.md must embed docs/diagrams/copilot-workflow.png");
+    errors.push(
+      "README.md must include the ASCII Release Radar workflow diagram",
+    );
   }
   if (
     readme !== undefined &&
