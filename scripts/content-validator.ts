@@ -6,7 +6,10 @@ const requiredFiles = [
   "package.json",
   "tsconfig.json",
   "biome.json",
+  "docs/diagrams/copilot-workflow.drawio",
+  "docs/diagrams/copilot-workflow.png",
   "docs/skills-alignment.md",
+  "docs/visual-overview.md",
   ".github/copilot-instructions.md",
   ".github/workflows/0-start-exercise.yml",
   ".github/workflows/ci.yml",
@@ -121,6 +124,14 @@ export async function validateRepositoryContent(
     errors.push(
       "docs/skills-alignment.md must describe Issues, GitHub Actions, Codespaces, personal copies, and official Skills resources",
     );
+  }
+
+  const readme = await readTextIfExists(join(root, "README.md"));
+  if (
+    readme !== undefined &&
+    !readme.includes("docs/diagrams/copilot-workflow.png")
+  ) {
+    errors.push("README.md must embed docs/diagrams/copilot-workflow.png");
   }
 
   for (const markdownFile of await listMarkdownFiles(root)) {

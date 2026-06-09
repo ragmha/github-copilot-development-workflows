@@ -1,0 +1,128 @@
+<mxfile host="app.diagrams.net" modified="2026-06-09T09:44:00.000Z" agent="GitHub Copilot CLI" version="24.7.17" type="device">
+  <diagram id="github-copilot-workflow" name="GitHub Copilot workflow map">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="GitHub Copilot Skills-style workflow" style="text;html=1;strokeColor=none;fillColor=none;fontSize=24;fontStyle=1;fontColor=#24292f;align=center;" vertex="1" parent="1">
+          <mxGeometry x="360" y="20" width="680" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Learner-owned repository + issue-guided steps + Copilot-assisted TDD + Actions guardrails" style="text;html=1;strokeColor=none;fillColor=none;fontSize=14;fontColor=#57606a;align=center;" vertex="1" parent="1">
+          <mxGeometry x="305" y="58" width="790" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="copy" value="Learner-owned copy&#xa;Codespaces&#xa;or local Bun" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;arcSize=12;shadow=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="132" width="220" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="start" value="Start exercise&#xa;workflow_dispatch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;arcSize=12;shadow=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="140" width="170" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="issue" value="Exercise issue&#xa;mission log" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="132" width="170" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="steps" value=".github/steps&#xa;guided comments" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=2;arcSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="760" y="140" width="170" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="copilot" value="Copilot workspace&#xa;VS Code + CLI + GitHub.com" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;arcSize=12;shadow=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="990" y="140" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="instructions" value="Durable context&#xa;.github/copilot-instructions.md" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="990" y="270" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="github-context" value="GitHub context&#xa;Issues + PRs + Projects + MCP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="990" y="370" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="loop-group" value="TDD implementation loop" style="swimlane;html=1;rounded=1;startSize=32;fillColor=#ffffff;strokeColor=#6c8ebf;strokeWidth=2;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="300" width="780" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="plan" value="1. Plan from issue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;arcSize=12;" vertex="1" parent="loop-group">
+          <mxGeometry x="35" y="78" width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="red" value="2. Red&#xa;write one failing behavior test" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;arcSize=12;" vertex="1" parent="loop-group">
+          <mxGeometry x="195" y="78" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="implement" value="3. Implement&#xa;minimal useful change" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;arcSize=12;" vertex="1" parent="loop-group">
+          <mxGeometry x="375" y="78" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="green" value="4. Green&#xa;tests + lint + typecheck" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;arcSize=12;" vertex="1" parent="loop-group">
+          <mxGeometry x="555" y="78" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="evidence" value="Paste red/green evidence back into the issue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;arcSize=12;" vertex="1" parent="loop-group">
+          <mxGeometry x="250" y="168" width="280" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="pr" value="Pull request&#xa;review + discussion" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;arcSize=12;shadow=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="610" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="actions" value="GitHub Actions guardrails&#xa;bun test · lint · typecheck · validate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;arcSize=12;shadow=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="610" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="security" value="Security review&#xa;safe workflows + trusted links" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="910" y="610" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="adoption" value="Adoption note&#xa;cost, quality, next ritual" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;arcSize=12;shadow=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="510" y="760" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="team-workflow" value="Apply in a real repo&#xa;one reusable team habit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;arcSize=12;shadow=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="860" y="760" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" value="Blue = learner/action · Yellow = quality gate/evidence · Green = progress/adoption · Gray = context/source" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f6f8fa;strokeColor=#d0d7de;fontSize=12;fontColor=#57606a;" vertex="1" parent="1">
+          <mxGeometry x="350" y="835" width="700" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-copy-start" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#6c8ebf;strokeWidth=2;endArrow=block;html=1;" edge="1" parent="1" source="copy" target="start">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-start-issue" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#6c8ebf;strokeWidth=2;endArrow=block;html=1;" edge="1" parent="1" source="start" target="issue">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-issue-steps" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#6c8ebf;strokeWidth=2;endArrow=block;html=1;" edge="1" parent="1" source="issue" target="steps">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-steps-copilot" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#6c8ebf;strokeWidth=2;endArrow=block;html=1;" edge="1" parent="1" source="steps" target="copilot">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-copilot-instructions" value="reads" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#9673a6;strokeWidth=2;endArrow=block;html=1;fontSize=11;" edge="1" parent="1" source="copilot" target="instructions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-copilot-context" value="uses" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#9673a6;strokeWidth=2;endArrow=block;html=1;fontSize=11;" edge="1" parent="1" source="copilot" target="github-context">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-issue-loop" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#6c8ebf;strokeWidth=2;endArrow=block;html=1;" edge="1" parent="1" source="issue" target="loop-group">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="615" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-plan-red" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#6c8ebf;strokeWidth=2;endArrow=block;html=1;" edge="1" parent="loop-group" source="plan" target="red">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-red-implement" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#6c8ebf;strokeWidth=2;endArrow=block;html=1;" edge="1" parent="loop-group" source="red" target="implement">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-implement-green" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#6c8ebf;strokeWidth=2;endArrow=block;html=1;" edge="1" parent="loop-group" source="implement" target="green">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-green-evidence" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#d6b656;strokeWidth=2;endArrow=block;html=1;" edge="1" parent="loop-group" source="green" target="evidence">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-evidence-issue" value="records" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#d6b656;strokeWidth=2;endArrow=block;html=1;fontSize=11;" edge="1" parent="1" source="evidence" target="issue">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="490" y="510" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-loop-pr" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#6c8ebf;strokeWidth=2;endArrow=block;html=1;" edge="1" parent="1" source="loop-group" target="pr">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-pr-actions" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#6c8ebf;strokeWidth=2;endArrow=block;html=1;" edge="1" parent="1" source="pr" target="actions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-actions-security" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#d6b656;strokeWidth=2;endArrow=block;html=1;" edge="1" parent="1" source="actions" target="security">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-actions-adoption" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#82b366;strokeWidth=2;endArrow=block;html=1;" edge="1" parent="1" source="actions" target="adoption">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-adoption-team-workflow" value="next habit" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#82b366;strokeWidth=2;endArrow=block;html=1;fontSize=11;" edge="1" parent="1" source="adoption" target="team-workflow">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

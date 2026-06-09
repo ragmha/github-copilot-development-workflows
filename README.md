@@ -27,6 +27,12 @@ This exercise turns a small TypeScript + Bun repository into a guided lab for Gi
 
 The content is readable without Actions, too. Start with [`.github/steps/0-welcome.md`](./.github/steps/0-welcome.md).
 
+## Visual workflow map
+
+![GitHub Copilot workflow map](docs/diagrams/copilot-workflow.png)
+
+See [`docs/visual-overview.md`](./docs/visual-overview.md) for a guided explanation and the editable draw.io source.
+
 ## GitHub Skills alignment
 
 This repository follows the same learning shape as GitHub Skills, adapted for GitHub Copilot workflows:
@@ -69,6 +75,7 @@ See [`docs/setup/codespaces.md`](./docs/setup/codespaces.md) and [`docs/setup/lo
 | `docs/` | Setup guides and facilitator notes |
 | `appendices/` | Reference material for Copilot surfaces, pricing, and troubleshooting |
 | `docs/skills-alignment.md` | How this repo applies GitHub Skills exercise patterns |
+| `docs/visual-overview.md` | Visual explanation of the issue-guided Copilot workflow |
 
 ## Commands
 
